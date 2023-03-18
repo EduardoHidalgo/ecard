@@ -1,0 +1,25 @@
+/* Small devices (landscape phones, less than 1100px) */
+
+@media (max-width: 1099.98px) { 
+}
+
+/* ------------------------- */
+/* only on mobile */
+/* ------------------------- */
+@media (min-width: 767.98px) {
+    .qr {
+        width: 0;
+    }
+}
+
+/* ------------------------- */
+/* Small devices (landscape phones, less than 768px) */
+/* ------------------------- */
+@media (max-width: 767.98px) { 
+    }
+
+   
+
+ @media (min-width: 320px) and (max-width: 480px) {
+    }
+
