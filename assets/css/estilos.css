@@ -5,42 +5,21 @@
     overflow-x: hidden;
 }
 
-@media (max-width: 768px) {
-    body, html {
-        max-width: 768px;
-        font-size: 100%;
-        height: 100%;
-        overflow-x: hidden;
-    }
-
-    .only-for-desktop {
-        display: none;
-    }
+html {
+    display: grid;
+    justify-content: center;
+    /* background: url('../images/fondo-hero.jpg') no-repeat center center; */
+    background: url('../images/bkgr-pattern.jpg') repeat center center;
+    background-attachment: fixed;
 }
 
-@media (min-width: 769px), screen and (orientation: landscape) {
-    .hide-on-desktop {
-        display: none;
-    }
-    body, html {
-        background-color: var(--primario);
-        width: 100%;
-        height: 5000%;
-        position: fixed;
-        overflow: hidden;
-    }
-    .only-for-desktop {
-        display: inline;
-    }
-
-    #hero .hero-black {
-        background-color: rgba(255,255,255,0) !important; 
-    }
-
-    .fb_reset {
-        display: none;
-    }
-  }
+body {
+    max-width: 700px;
+    background-color: white;
+    box-shadow: 0px 0px 58px -9px rgba(0,0,0,0.53);
+    -webkit-box-shadow: 0px 0px 58px -9px rgba(0,0,0,0.53);
+    -moz-box-shadow: 0px 0px 58px -9px rgba(0,0,0,0.53);
+}
 
 :root {
      --dedalo: #D2C29D;
@@ -85,8 +64,10 @@ letter-spacing: 0.2px;
 }
 
 h1 {
-    font-size: 2em;
-    line-height: 1.5em;
+    font-size: 2.1rem !important;
+    line-height: 1.8em;
+    padding: 2px 0;
+    overflow: hidden;
 }
 
 h2 {
@@ -130,6 +111,12 @@ a:hover {
 }
 
 /* BOTONES -------------------- */
+.boton-inactivo {
+    color: black !important;
+    pointer-events: none !important;
+    text-decoration: none !important;
+}
+
 .boton-primario {
     font-size: 1.1em;
     background: var(--primario);
@@ -147,14 +134,8 @@ a:hover {
     background: var(--secundario);
 }
 
-.no-boton {
-    color: black !important;
-    pointer-events: none !important;
-    text-decoration: none !important;
-}
-
 /* display: grid ------------- */
-#hero, #person, #links, #services, #location, footer {
+#hero, #marca, #links, #services, #location, footer {
     width: 100%;
     display: grid;
 }
@@ -166,12 +147,12 @@ a:hover {
     align-content: center;
     text-align: center;
     position: relative;
-    height: 100vh;
+    height:95vh;
     width: 100%;
 }
 
-#hero .logo, #hero h1, #hero h2, #hero small {
-    z-index: 999;
+#hero .avatar, #hero, #hero h1, #hero h2, #hero small {
+    z-index: 9999 !important;
 }
 
 #hero h1 {
@@ -187,68 +168,91 @@ a:hover {
     width: 90vw;
 }
 
+#hero small {
+    margin-bottom: 40px;
+}
+
 #hero .hero-black {
     margin: 0;
     padding: 0;
     position: absolute;
     width: 100%;
-    height: 100vh;
-    z-index: 0;
+    height: 90%;
+    z-index: 1;
     background-color: var(--negro20); 
+    border-bottom: 4px solid var(--primario);
 }
 
-#hero .logo {
-    margin: 0 auto;
+#hero .avatar-container, #hero .avatar {
     border-radius: 50%;
-    width: 170px;
+    width: 167px;
+    height: 167px;
 }
 
-/* PERSON -------------------- */
-#person .photo {
-    position: relative;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
+#hero .avatar-container {
+    z-index: 999;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 8px solid rgba(255,255,255,0.3);
 }
 
-#person .photo, #person .photo img {
-    position: relative;
+#hero .avatar {
+    border-top: 2px solid rgba(255,255,255,5.0);
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+    box-shadow: 0 2px 85px 19px rgba(255,255,255,0.60);
 }
 
-#person .photo img {
-    width: 100%;
-    height: auto;
-}
-
-#person .institute {
-    margin: 50px auto 0 auto;
-    opacity: 50%;
-}
-
-#person .photo .info {
-    position: relative;
+#hero .marca-logo {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    position: absolute;
+    z-index:1000000;
     bottom: 0;
-    display: block;
-    right: 0;
-    background-color: white;
-    border-radius: 5px;
-    margin-top: -30px;
-    padding: 17px 20px;
+    justify-self: center;
+    border: 5px solid white;
+    box-shadow: 0 -3px 3px 1px rgba(0,0,0,0.4);
+}
+
+#hero .hero-fondo, #hero .hero-fondo-2 {
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 90%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    position:  absolute;
+}
+
+/* MARCA -------------------- */
+#marca {
+    z-index: 1 !important;
+    position: relative;
+    margin-top: 30px;
+}
+
+#marca .info {
+    position: relative;
     text-align: center;
 }
 
-#person .description {
+#marca .description {
     margin: 30px 0 40px 0;
     padding: 0 10%;
     text-align: justify;
 }
 
-#person .info p {
+#marca .info p {
     color: var(--primario);
-    font-size: 1.1em;
-    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 6px 30px 0 30px;
+}
+
+#marca a {
+    text-align: center;
 }
 
 /* LINK ---------------------- */
@@ -311,7 +315,7 @@ a:hover {
 /* CAROUSEL ------------------ */
 .carrusel {
     padding: 20px 0 !important;
-    background-color: var(--secundario);
+    background-color: var(--primario);
 }
 .carrusel .botones-carrusel {
     margin-bottom: 25px;
@@ -514,7 +518,6 @@ footer small:nth-last-child(1) {
     font-family: "FontAwesome"; 
     font-size: 3.5em;
     text-decoration: none;
-    /* position: absolute; */
 }
 .playreel {
     display: inline-flex;
@@ -523,14 +526,14 @@ footer small:nth-last-child(1) {
     justify-content: center;
     align-items: center;
     z-index: 10;
+    margin-bottom: 95px;
 }
 
 .playreel .icon-play {
     background: url("../images/icono-play.svg") no-repeat center center;
     background-size: contain;
-    width: 80px;
-    height: 80px;
-    margin-top: 20px;
+    width: 70px;
+    height: 70px;
     display: inline-block;
     transition: var(--trans);
     border-radius: 50%;
@@ -540,8 +543,8 @@ footer small:nth-last-child(1) {
 .playreel:hover .icon-play {
     background: url("../images/icono-play-hover.svg") no-repeat center center;
     background-size: contain;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     transform: scale(0.8);
     opacity: 0.9;
