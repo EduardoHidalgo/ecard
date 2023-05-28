@@ -58,7 +58,6 @@ export const Dashboard: FC<DashboardProps> = ({
           >
             <div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
           </Transition.Child>
-
           <div className="fixed inset-0 z-40 flex">
             <Transition.Child
               as={Fragment}
@@ -161,7 +160,6 @@ export const Dashboard: FC<DashboardProps> = ({
             <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-
         <main>
           <Module title={title}>{children}</Module>
         </main>
