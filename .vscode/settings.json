@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    //".gitignore": true,
+    ".next": true,
+    "ecard.code-workspace": true,
+    "next-env.d.ts": true,
+    "node_modules": true,
+    "postcss.config.js": true,
+    "yarn.lock": true
+  }
+}
