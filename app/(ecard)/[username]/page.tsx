@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import { STUB_USERS } from "@/lib/stubs/users";
 
+export async function generateStaticParams(): Promise<Array<ParamsProps>> {
+  // TODO replace with the fetching off all users and mapping their usernames.
+  return STUB_USERS;
+}
+
 export interface ParamsProps {
   username: string;
 }
@@ -25,9 +30,4 @@ export default async function UserEcardPage({
   const ecard = await getEcard(username);
 
   return <h1>User Ecard Page: {username}</h1>;
-}
-
-export async function generateStaticParams(): Promise<Array<ParamsProps>> {
-  // TODO replace with the fetching off all users and mapping their usernames.
-  return STUB_USERS;
 }
