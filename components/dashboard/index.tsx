@@ -4,11 +4,11 @@ import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 
 import { Module } from "../module";
-import { Modules } from "@/types/modules";
+import { AdminModules, UserModules } from "@/types/modules";
 
-export interface DashboardProps {
+export interface DashboardProps<M extends AdminModules | UserModules> {
   children: ReactNode;
-  currentModule: Modules;
+  currentModule: M;
   isSidebarOpen: boolean;
   items: Array<{
     name: string;
@@ -18,14 +18,14 @@ export interface DashboardProps {
         titleId?: string | undefined;
       } & React.RefAttributes<SVGSVGElement>
     >;
-    module: Modules;
+    module: M;
   }>;
   title: string;
-  onClickDrawerItem: (module: Modules) => void;
+  onClickDrawerItem: (module: M) => void;
   onClickSidebar: (state: boolean) => void;
 }
 
-export const Dashboard: FC<DashboardProps> = ({
+export const Dashboard = <M extends AdminModules | UserModules>({
   children,
   currentModule,
   isSidebarOpen,
@@ -33,7 +33,7 @@ export const Dashboard: FC<DashboardProps> = ({
   onClickDrawerItem,
   onClickSidebar,
   title,
-}) => {
+}: DashboardProps<M>) => {
   return (
     <div>
       <Transition.Root show={isSidebarOpen} as={Fragment}>
@@ -63,7 +63,7 @@ export const Dashboard: FC<DashboardProps> = ({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-primary-700 pt-5 pb-4">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -94,14 +94,14 @@ export const Dashboard: FC<DashboardProps> = ({
                         key={item.name}
                         className={classNames(
                           item.module === currentModule
-                            ? "bg-indigo-800 text-white"
-                            : "text-indigo-100 hover:bg-indigo-600",
+                            ? "bg-primary-800 text-white"
+                            : "text-indigo-100 hover:bg-primary-600",
                           "group flex items-center rounded-md px-2 py-2 text-base font-medium"
                         )}
                         onClick={() => onClickDrawerItem(item.module)}
                       >
                         <item.icon
-                          className="mr-4 h-6 w-6 flex-shrink-0 text-indigo-300"
+                          className="mr-4 h-6 w-6 flex-shrink-0 text-primary-300"
                           aria-hidden="true"
                         />
                         {item.name}
@@ -119,22 +119,22 @@ export const Dashboard: FC<DashboardProps> = ({
       {/* Static sidebar for desktop. */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component.*/}
-        <div className="flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5">
+        <div className="flex flex-grow flex-col overflow-y-auto bg-primary-700 pt-5">
           <div className="mt-5 flex flex-1 flex-col">
-            <nav className="flex-1 space-y-1 px-2 pb-4">
+            <nav className="flex-1 space-y-1 pl-2 pb-4">
               {items.map((item) => (
                 <a
                   key={item.name}
                   className={classNames(
                     item.module === currentModule
-                      ? "bg-indigo-800 text-white"
-                      : "text-indigo-100 hover:bg-indigo-600",
-                    "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
+                      ? "bg-primary-800 text-white"
+                      : "text-indigo-100 hover:bg-primary-600",
+                    "group flex items-center px-2 py-2 text-sm font-medium"
                   )}
                   onClick={() => onClickDrawerItem(item.module)}
                 >
                   <item.icon
-                    className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                    className="mr-3 h-6 w-6 flex-shrink-0 text-primary-300"
                     aria-hidden="true"
                   />
                   {item.name}
@@ -144,11 +144,12 @@ export const Dashboard: FC<DashboardProps> = ({
           </div>
         </div>
       </div>
+      {/* Static sidebar for mobile. This contains the main element. */}
       <div className="flex flex-1 flex-col lg:pl-64">
-        <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow lg:hidden">
+        <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow-md lg:hidden">
           <button
             type="button"
-            className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 lg:hidden"
+            className="px-4 text-white bg-primary-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-600 lg:hidden"
             onClick={() => onClickSidebar(true)}
           >
             <span className="sr-only">Open sidebar</span>

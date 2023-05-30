@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+
 import { STUB_USERS } from "@/lib/stubs/users";
 
 export async function generateStaticParams(): Promise<Array<ParamsProps>> {

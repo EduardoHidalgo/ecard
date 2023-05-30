@@ -1,4 +1,7 @@
+"use client";
+
 import "../global.css";
+import { montserrat, raleway } from "@/lib/fonts";
 
 export default function RootLayout({
   children,
@@ -6,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es" className={`${montserrat.variable} ${raleway.variable}`}>
       <body>{children}</body>
     </html>
   );

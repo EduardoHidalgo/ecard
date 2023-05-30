@@ -17,9 +17,6 @@
     "target": "es5",
     "paths": {
       "@/components/*": ["./components/*"],
-      "@/containers/*": ["./containers/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/layouts/*": ["./layouts/*"],
       "@/lib/*": ["./lib/*"],
       "@/styles/*": ["./styles/*"],
       "@/types/*": ["./types/*"]
