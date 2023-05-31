@@ -7,9 +7,9 @@ export interface User {
   email: string;
   fullname: string;
   id: string;
-  state: "show" | "missingData" | "avoid";
+  status: "banned" | "deleted" | "disabled" | "missingData" | "show";
   subscription?: Subscription;
-  type: "solo" | "company";
+  type: "enterprise" | "nested" | "individual";
   updatedAt: Date;
   username: string;
 }
@@ -21,15 +21,7 @@ export interface Subscription {
     price: number;
   }>;
   price: number;
-  status:
-    | "subscribed"
-    | "payPending"
-    | "payRejected"
-    | "banned"
-    | "canceled"
-    | "deleted"
-    | "disabled"
-    | "free";
+  status: "subscribed" | "payPending" | "payRejected" | "free" | "canceled";
   statusUpdatedAt: Date;
 }
 
@@ -100,3 +92,18 @@ export interface Service {
 
 export type SubAlert = Pick<Subscription, "statusUpdatedAt" | "status"> &
   Pick<User, "avatar" | "type" | "username" | "fullname" | "companyUsername">;
+
+export type AdminUserRow = Pick<
+  User,
+  | "avatar"
+  | "companyName"
+  | "companyUsername"
+  | "createdAt"
+  | "email"
+  | "fullname"
+  | "username"
+  | "status"
+  | "type"
+>;
+
+export type AdminUsersList = Array<AdminUserRow>;
