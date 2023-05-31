@@ -88,7 +88,7 @@ export const Dashboard = <M extends AdminModules | UserModules>({
                   </div>
                 </Transition.Child>
                 <div className="mt-5 h-0 flex-1 overflow-y-auto">
-                  <nav className="space-y-1 px-2">
+                  <nav className="space-y-1 pl-2">
                     {items.map((item) => (
                       <div
                         key={item.name}

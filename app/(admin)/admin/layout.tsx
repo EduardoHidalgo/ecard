@@ -1,7 +1,12 @@
 "use client";
 import { ReactNode, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CogIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/outline";
+import {
+  ChartBarIcon,
+  CogIcon,
+  HomeIcon,
+  UsersIcon,
+} from "@heroicons/react/24/outline";
 import "../../global.css";
 
 import { AdminModules } from "@/types/modules";
@@ -22,7 +27,7 @@ export default function AdminPage({ children }: AdminPageProps) {
   const items = [
     { name: "Panel Principal", icon: HomeIcon, module: AdminModules.home },
     { name: "Usuarios", icon: UsersIcon, module: AdminModules.users },
-    { name: "Analíticas", icon: UsersIcon, module: AdminModules.analytics },
+    { name: "Analíticas", icon: ChartBarIcon, module: AdminModules.analytics },
     { name: "Configuración", icon: CogIcon, module: AdminModules.config },
   ];
   const title = items.find((i) => i.module === currentModule)!.name;
