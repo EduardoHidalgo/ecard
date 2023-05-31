@@ -11,7 +11,7 @@ import { Button } from "@/components/button";
 import { useState } from "react";
 import { SubAlert } from "@/types/models";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Admin",
 };
 

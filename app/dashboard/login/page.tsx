@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Admin Login",
 };
 
