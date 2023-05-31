@@ -44,9 +44,12 @@ export default function DashboardRootLayout({
 
   const onClickSidebar = (state: boolean) => setIsSidebarOpen(state);
 
+  const goToEcard = () => router.push("/eduardo");
+
   const props: DashboardProps<UserModules> = {
     children,
     currentModule,
+    goToEcard,
     isSidebarOpen,
     items,
     onClickDrawerItem,

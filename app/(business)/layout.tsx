@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import {
   ChartBarIcon,
   CogIcon,
+  DevicePhoneMobileIcon,
   HomeIcon,
   UserIcon,
   UsersIcon,
@@ -30,7 +31,16 @@ export default function BusinessRootLayout({
 
   const items = [
     { name: "Panel Principal", icon: HomeIcon, module: BusinessModules.home },
-    { name: "Cuenta", icon: UserIcon, module: BusinessModules.account },
+    {
+      name: "Cuenta Empresarial",
+      icon: UserIcon,
+      module: BusinessModules.account,
+    },
+    {
+      name: "Mi eCard",
+      icon: DevicePhoneMobileIcon,
+      module: BusinessModules.myEcard,
+    },
     { name: "Empleados", icon: UsersIcon, module: BusinessModules.employees },
     { name: "Métricas", icon: ChartBarIcon, module: BusinessModules.metrics },
     { name: "Configuración", icon: CogIcon, module: BusinessModules.config },
@@ -42,14 +52,20 @@ export default function BusinessRootLayout({
 
     if (isSidebarOpen) setIsSidebarOpen(false);
 
-    router.push(`/dashboard${module}`);
+    if (module === BusinessModules.myEcard)
+      return router.push("/mycompany/daniel");
+
+    router.push(`/business${module}`);
   };
 
   const onClickSidebar = (state: boolean) => setIsSidebarOpen(state);
 
+  const goToEcard = () => router.push("/mycompany/eduardo");
+
   const props: DashboardProps<BusinessModules> = {
     children,
     currentModule,
+    goToEcard,
     isSidebarOpen,
     items,
     onClickDrawerItem,

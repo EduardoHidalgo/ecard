@@ -12,9 +12,10 @@ export enum UserModules {
 }
 
 export enum BusinessModules {
-  home = "/",
   account = "/account",
-  employees = "/employees",
-  metrics = "/metrics",
   config = "/config",
+  employees = "/employees",
+  home = "/",
+  metrics = "/metrics",
+  myEcard = "/myEcard",
 }

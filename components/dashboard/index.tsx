@@ -5,12 +5,14 @@ import classNames from "classnames";
 
 import { Module } from "../module";
 import { AdminModules, BusinessModules, UserModules } from "@/types/modules";
+import { Button } from "../button";
 
 export interface DashboardProps<
   M extends AdminModules | BusinessModules | UserModules
 > {
   children: ReactNode;
   currentModule: M;
+  goToEcard?: () => void;
   isSidebarOpen: boolean;
   items: Array<{
     name: string;
@@ -32,6 +34,7 @@ export const Dashboard = <
 >({
   children,
   currentModule,
+  goToEcard,
   isSidebarOpen,
   items,
   onClickDrawerItem,
@@ -40,6 +43,7 @@ export const Dashboard = <
 }: DashboardProps<M>) => {
   return (
     <div>
+      {/* Mobile Sidebar */}
       <Transition.Root show={isSidebarOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -92,6 +96,15 @@ export const Dashboard = <
                   </div>
                 </Transition.Child>
                 <div className="mt-5 h-0 flex-1 overflow-y-auto">
+                  {goToEcard && (
+                    <div className="p-3 mb-2">
+                      <Button
+                        label="Ver tu eCard"
+                        onClick={goToEcard}
+                        style="contrast"
+                      />
+                    </div>
+                  )}
                   <nav className="space-y-1 pl-2">
                     {items.map((item) => (
                       <div
@@ -125,6 +138,15 @@ export const Dashboard = <
         {/* Sidebar component.*/}
         <div className="flex flex-grow flex-col overflow-y-auto bg-primary-700 pt-5">
           <div className="mt-5 flex flex-1 flex-col">
+            {goToEcard && (
+              <div className="p-3 mb-2">
+                <Button
+                  label="Ver tu eCard"
+                  onClick={goToEcard}
+                  style="contrast"
+                />
+              </div>
+            )}
             <nav className="flex-1 space-y-1 pl-2 pb-4">
               {items.map((item) => (
                 <a
