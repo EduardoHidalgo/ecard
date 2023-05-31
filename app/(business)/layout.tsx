@@ -6,35 +6,38 @@ import {
   CogIcon,
   HomeIcon,
   UserIcon,
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 import "../global.css";
 
-import { UserModules } from "@/types/modules";
+import { BusinessModules } from "@/types/modules";
 import { Dashboard, DashboardProps } from "@/components/dashboard";
 import { montserrat, raleway } from "@/lib/fonts";
 
-export interface DashboardRootLayoutProps {
+export interface BusinessRootLayoutProps {
   children: ReactNode;
 }
 
-export default function DashboardRootLayout({
+export default function BusinessRootLayout({
   children,
-}: DashboardRootLayoutProps) {
+}: BusinessRootLayoutProps) {
   const router = useRouter();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentModule, setCurrentModule] = useState<UserModules>(
-    UserModules.home
+  const [currentModule, setCurrentModule] = useState<BusinessModules>(
+    BusinessModules.home
   );
 
   const items = [
-    { name: "Panel Principal", icon: HomeIcon, module: UserModules.home },
-    { name: "Perfil", icon: UserIcon, module: UserModules.profile },
-    { name: "Configuración", icon: CogIcon, module: UserModules.config },
+    { name: "Panel Principal", icon: HomeIcon, module: BusinessModules.home },
+    { name: "Cuenta", icon: UserIcon, module: BusinessModules.account },
+    { name: "Empleados", icon: UsersIcon, module: BusinessModules.employees },
+    { name: "Métricas", icon: ChartBarIcon, module: BusinessModules.metrics },
+    { name: "Configuración", icon: CogIcon, module: BusinessModules.config },
   ];
   const title = items.find((i) => i.module === currentModule)!.name;
 
-  const onClickDrawerItem = (module: UserModules) => {
+  const onClickDrawerItem = (module: BusinessModules) => {
     setCurrentModule(module);
 
     if (isSidebarOpen) setIsSidebarOpen(false);
@@ -44,7 +47,7 @@ export default function DashboardRootLayout({
 
   const onClickSidebar = (state: boolean) => setIsSidebarOpen(state);
 
-  const props: DashboardProps<UserModules> = {
+  const props: DashboardProps<BusinessModules> = {
     children,
     currentModule,
     isSidebarOpen,

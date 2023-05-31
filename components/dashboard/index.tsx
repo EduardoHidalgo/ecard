@@ -4,9 +4,11 @@ import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 
 import { Module } from "../module";
-import { AdminModules, UserModules } from "@/types/modules";
+import { AdminModules, BusinessModules, UserModules } from "@/types/modules";
 
-export interface DashboardProps<M extends AdminModules | UserModules> {
+export interface DashboardProps<
+  M extends AdminModules | BusinessModules | UserModules
+> {
   children: ReactNode;
   currentModule: M;
   isSidebarOpen: boolean;
@@ -25,7 +27,9 @@ export interface DashboardProps<M extends AdminModules | UserModules> {
   onClickSidebar: (state: boolean) => void;
 }
 
-export const Dashboard = <M extends AdminModules | UserModules>({
+export const Dashboard = <
+  M extends AdminModules | BusinessModules | UserModules
+>({
   children,
   currentModule,
   isSidebarOpen,
