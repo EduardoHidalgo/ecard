@@ -1,3 +1,13 @@
+import { FooterSection } from "@/components/landing/footer";
+import { HeroSection } from "@/components/landing/hero";
+import { PricingSection } from "@/components/landing/pricing";
+
 export default function HomePage() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <HeroSection />
+      <PricingSection />
+      <FooterSection />
+    </>
+  );
 }

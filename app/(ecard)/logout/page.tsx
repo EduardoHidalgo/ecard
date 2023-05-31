@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/components/buttonLink";
 import "../../global.css";
 
-export default function DashboardPage() {
+export default function LogoutPage() {
   return (
     <main className="grid min-h-full bg-white py-24">
       <div className="text-center w-full max-w-3xl px-6 lg:px-8 py-8 m-auto">
@@ -9,7 +9,7 @@ export default function DashboardPage() {
           Tu sesión se ha cerrado
         </h1>
         <p className="font-sans mt-6 text-base leading-7 text-gray-600">
-          Puedes iniciar sesión de nuevo desde la página principal. Serás
+          Puedes acceder de nuevo desde la página principal. Serás
           redireccionado en 5 segundos.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
