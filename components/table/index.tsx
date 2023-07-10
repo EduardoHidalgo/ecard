@@ -1,5 +1,4 @@
 import { FC, ReactNode } from "react";
-import { Button } from "../button";
 import { ButtonLink } from "../buttonLink";
 
 export interface TableProps {
@@ -10,7 +9,7 @@ export interface TableProps {
 
 export const Table: FC<TableProps> = ({ children, hasAction, headers }) => {
   return (
-    <div className="mt-8 flow-root shadow">
+    <div className="w-full flow-root shadow">
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full align-middle">
           <div className="overflow-hidden border-2 border-primary-400">
@@ -21,12 +20,13 @@ export const Table: FC<TableProps> = ({ children, hasAction, headers }) => {
                     <th
                       scope="col"
                       className="px-3 py-4 text-left text-sm font-semibold text-white"
+                      key={header}
                     >
                       {header}
                     </th>
                   ))}
                   {hasAction && (
-                    <th scope="col" className="relative py-4 px-3">
+                    <th key={"edit"} scope="col" className="relative py-4 px-3">
                       <span className="sr-only">Edit</span>
                     </th>
                   )}
@@ -45,7 +45,7 @@ export const Table: FC<TableProps> = ({ children, hasAction, headers }) => {
 
 export interface TableRowProps {
   children: ReactNode;
-  hrefEdit: string;
+  hrefEdit?: string;
   index: number | string;
 }
 
@@ -54,7 +54,7 @@ export const TableRow: FC<TableRowProps> = ({ children, hrefEdit, index }) => {
     <tr key={index} className="">
       {children}
       {hrefEdit && (
-        <td className="whitespace-nowrap px-3 py-4">
+        <td className="whitespace-nowrap px-3 py-4 text-right">
           <ButtonLink label="Editar" href={hrefEdit} />
         </td>
       )}

@@ -4,7 +4,7 @@ export interface ButtonProps {
   label: string;
   onClick?: () => void;
   type?: "button" | "reset" | "submit";
-  style?: "primary" | "contrast";
+  style?: "primary" | "contrast" | "danger";
 }
 
 export const Button: FC<ButtonProps> = ({ label, onClick, style, type }) => {
@@ -13,6 +13,10 @@ export const Button: FC<ButtonProps> = ({ label, onClick, style, type }) => {
     case "contrast":
       className =
         "w-full bg-primary-100 px-2.5 py-1.5 text-sm font-semibold text-black shadow-sm hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-200";
+      break;
+    case "danger":
+      className =
+        "w-full bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-200";
       break;
     case "primary":
     default:

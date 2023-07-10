@@ -36,9 +36,9 @@ export const SubAlertsList: FC<SubAlerts> = ({ subAlerts }) => {
                 <div className="min-w-0 flex-auto">
                   <p className="text-sm font-semibold leading-6 text-gray-900">
                     {sub.fullname}
-                    {sub.type === "company" && (
+                    {sub.type === "enterprise" && (
                       <span className="inline-flex ml-2 items-center rounded-md bg-primary-200 px-1.5 py-0.5 text-xs font-medium text-white">
-                        Empresa
+                        Empresarial
                       </span>
                     )}
                   </p>

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { AdminUserRow, AdminUsersList } from "@/types/models";
 import { Table, TableData, TableRow } from "@/components/table";
+import { StatusBadge } from "@/components/statusBadge";
 
 export interface AdminUsersTableProps {
   list: AdminUsersList;
@@ -17,42 +18,6 @@ export const AdminUsersTable: FC<AdminUsersTableProps> = ({ list }) => {
     "creado el",
     "tipo",
   ];
-
-  const statusBadge = (status: AdminUserRow["status"]) => {
-    const className =
-      "inline-flex items-center rounded-md px-2 py-1 text-xs font-semibold";
-
-    switch (status) {
-      case "banned":
-        return (
-          <span className={`${className} bg-black text-white`}>baneado</span>
-        );
-      case "deleted":
-        return (
-          <span className={`${className} bg-red-500 text-white`}>
-            eliminado
-          </span>
-        );
-      case "disabled":
-        return (
-          <span className={`${className} bg-gray-500 text-white`}>
-            deshabilitado
-          </span>
-        );
-      case "missingData":
-        return (
-          <span className={`${className} bg-orange-500 text-white`}>
-            incompleto
-          </span>
-        );
-      case "show":
-        return (
-          <span className={`${className} bg-green-500 text-gray-900`}>
-            activo
-          </span>
-        );
-    }
-  };
 
   const userType = (type: AdminUserRow["type"]) => {
     switch (type) {
@@ -100,7 +65,9 @@ export const AdminUsersTable: FC<AdminUsersTableProps> = ({ list }) => {
                 </div>
               </div>
             </TableData>
-            <TableData>{statusBadge(user.status)}</TableData>
+            <TableData>
+              <StatusBadge status={user.status} />
+            </TableData>
             <TableData>{user.companyName}</TableData>
             <TableData>{user.email}</TableData>
             <TableData>{user.createdAt.toLocaleDateString()}</TableData>

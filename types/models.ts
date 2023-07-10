@@ -1,7 +1,5 @@
 export interface User {
   avatar?: string;
-  companyName?: string;
-  companyUsername?: string;
   createdAt: Date;
   ecard?: Ecard;
   email: string;
@@ -12,7 +10,28 @@ export interface User {
   type: "enterprise" | "nested" | "individual";
   updatedAt: Date;
   username: string;
+  company?: Company;
+  metrics?: UserMetrics;
 }
+
+export type UserFormType = Pick<
+  User,
+  | "avatar"
+  | "createdAt"
+  | "email"
+  | "fullname"
+  | "id"
+  | "status"
+  | "type"
+  | "updatedAt"
+  | "username"
+>;
+
+export type SubscriptionFormType = Subscription;
+
+export type EcardFormType = Ecard;
+
+export type CompanyFormType = Company;
 
 export interface Subscription {
   createdAt: string;
@@ -41,21 +60,10 @@ export interface UserMetrics {
   whatsappClicks: number;
 }
 
-export type Ecard = ECardCompany | ECardIndividual;
-
-export interface ECardCompany {
+export interface Ecard {
+  backgroundImage: string;
   carousel?: Array<string>;
   details?: EmployeeInfo;
-  company?: Company;
-  map?: string;
-  qr?: string;
-  services?: Array<Service>;
-  video?: string;
-}
-
-export interface ECardIndividual {
-  carousel?: Array<string>;
-  details?: IndividualInfo;
   map?: string;
   qr?: string;
   services?: Array<Service>;
@@ -63,6 +71,8 @@ export interface ECardIndividual {
 }
 
 export interface Company {
+  companyName?: string;
+  companyUsername?: string;
   description?: string;
   imageContent?: string;
   logo?: string;
@@ -91,19 +101,13 @@ export interface Service {
 }
 
 export type SubAlert = Pick<Subscription, "statusUpdatedAt" | "status"> &
-  Pick<User, "avatar" | "type" | "username" | "fullname" | "companyUsername">;
+  Pick<User, "avatar" | "type" | "username" | "fullname"> &
+  Pick<Company, "companyUsername">;
 
 export type AdminUserRow = Pick<
   User,
-  | "avatar"
-  | "companyName"
-  | "companyUsername"
-  | "createdAt"
-  | "email"
-  | "fullname"
-  | "username"
-  | "status"
-  | "type"
->;
+  "avatar" | "createdAt" | "email" | "fullname" | "username" | "status" | "type"
+> &
+  Pick<Company, "companyName" | "companyUsername">;
 
 export type AdminUsersList = Array<AdminUserRow>;

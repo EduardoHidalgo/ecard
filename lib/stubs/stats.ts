@@ -14,7 +14,7 @@ export const STUB_ADMIN_MAIN_SUB_ALERTS: Array<SubAlert> = [
     status: "canceled",
     statusUpdatedAt: new Date(),
     username: "lesliealex",
-    type: "solo",
+    type: "individual",
   },
   {
     avatar:
@@ -23,7 +23,7 @@ export const STUB_ADMIN_MAIN_SUB_ALERTS: Array<SubAlert> = [
     status: "canceled",
     statusUpdatedAt: new Date(),
     username: "foster",
-    type: "company",
+    type: "enterprise",
   },
   {
     avatar:
@@ -32,7 +32,7 @@ export const STUB_ADMIN_MAIN_SUB_ALERTS: Array<SubAlert> = [
     status: "payRejected",
     statusUpdatedAt: new Date(),
     username: "dries",
-    type: "solo",
+    type: "individual",
   },
   {
     avatar:
@@ -41,7 +41,7 @@ export const STUB_ADMIN_MAIN_SUB_ALERTS: Array<SubAlert> = [
     status: "payPending",
     statusUpdatedAt: new Date(),
     username: "lindsay",
-    type: "solo",
+    type: "nested",
   },
   {
     avatar:
@@ -50,6 +50,6 @@ export const STUB_ADMIN_MAIN_SUB_ALERTS: Array<SubAlert> = [
     status: "payRejected",
     statusUpdatedAt: new Date(),
     username: "courtneyhenry",
-    type: "company",
+    type: "nested",
   },
 ];
